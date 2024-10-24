@@ -208,7 +208,7 @@ body {
 
                         button[type='submit'] {
 
-                            top: 28px;
+                            top: 30px;
                             right: 24px;
 
                             img {
@@ -463,7 +463,9 @@ body {
 
                     .section_products_items {
                         display: grid;
-                        grid-template-columns: repeat(3, 1fr);
+                        /* grid-template-columns: repeat(3, 1fr); */
+                        grid-template-columns: repeat(3, minmax(300px, 1fr));
+                        width: 100%;
                         gap: 30px;
 
 
@@ -539,7 +541,7 @@ body {
     }
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1337px) {
     .main {
 
         .container {
@@ -583,7 +585,7 @@ body {
 
                         .section_products_items {
                             display: grid;
-                            grid-template-columns: repeat(2, 1fr);
+                            grid-template-columns: repeat(2, minmax(300px, 1fr));
                             gap: 30px;
 
 
@@ -617,7 +619,7 @@ body {
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1007px) {
 
     .main {
 
@@ -669,13 +671,15 @@ body {
 
                             .product_item {
                                 padding: 4px;
+                                width: 100%;
+                                height: auto;
 
                                 .top {
 
                                     img {
                                         border-radius: 8px;
-                                        width: 137px;
-                                        height: 120px;
+                                        width: 100%;
+                                        height: auto;
                                     }
                                 }
 
@@ -714,7 +718,7 @@ body {
     }
 }
 
-@media screen and (max-width:420px) {
+@media screen and (max-width:715px) {
     .main {
 
         .container {
@@ -728,6 +732,15 @@ body {
                     .aside_container {
 
                         .aside_items {
+                            max-height: 28px;
+                            transition: .5s;
+                            overflow-y: hidden;
+                            &.hidden{
+                                max-height: 1000px;
+                            }
+                            .none_model {
+                                /* display: none; */
+                            }
 
                             .aside_blok_info {}
 
@@ -760,19 +773,20 @@ body {
 
                         .section_products_items {
                             display: grid;
-                            grid-template-columns: repeat(2, 1fr);
-                            gap: 20px;
+                            grid-template-columns: repeat(2, minmax(auto, 1fr));
+                            justify-items: start;
 
 
                             .product_item {
                                 padding: 4px;
+                                width: 100%;
 
                                 .top {
 
                                     img {
                                         border-radius: 8px;
-                                        width: 137px;
-                                        height: 120px;
+                                        width: 100%;
+                                        height: auto;
                                     }
                                 }
 

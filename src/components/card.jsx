@@ -1,21 +1,24 @@
 import Photo from '../static/img/photo.png'
 import Motor from '../static/img/moto.svg'
+import { useState } from 'react'
 
 const Card = () => {
+
+    const [openCard,setOpenCard] = useState(false)
 
     return (
         <aside className="aside">
             <div className="aside_container">
-                <div className="aside_items">
+                <div className={`aside_items ${openCard ? "hidden": "" }`}>
 
-                    <div className="aside_blok_info">
+                    <div className="aside_blok_info" onClick={() => setOpenCard(!openCard)}>
                         <h3>Корзина</h3>
                         <span className="count_card_items">
                             4
                         </span>
                     </div>
 
-                    <div className="aside_items_products">
+                    <div className={`aside_items_products ${openCard ? 'none_model':''}`}>
 
                         <div className="blok_item_product">
                             <div className="left">
@@ -67,16 +70,16 @@ const Card = () => {
 
                     </div>
 
-                    <div className="blok_final_price">
+                    <div className={`blok_final_price ${openCard ? 'none_model':''}`}>
                         <span>Итого</span>
                         <span>1279₽</span>
                     </div>
 
-                    <button className="place_an_order">
+                    <button className={`place_an_order ${openCard ? 'none_model':''}`}>
                         Оформить заказ
                     </button>
 
-                    <div className="info">
+                    <div className={`info ${openCard ? 'none_model':''}`}>
                         <img src={Motor} alt="" />
                         <span>Бесплатная доставка</span>
                     </div>
