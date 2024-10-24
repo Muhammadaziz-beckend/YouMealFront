@@ -5,13 +5,28 @@ import Burger_menu from '../static/img/burger_menu.svg'
 import Search_media from '../static/img/search_model.png'
 import { useState } from 'react'
 
-const Header = () => {
+const Header = ({filter, setFilter}) => {
 
     const [formSearch, setFormSearch] = useState(true)
 
     const headerSubmit = (event) => {
-        event.preventDefault()
-    }
+        event.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
+    
+        const formData = new FormData(event.target); // Передаем event.target для создания FormData
+    
+        const data = {}; // Объект для хранения данных из формы
+    
+        // Заполняем объект данными из формы
+        for (let [key, value] of formData) {
+            data[key] = [value]; // Добавляем данные в объект
+        }
+        
+        console.log(data);
+        
+        // Обновляем фильтры, передавая новые данные
+        setFilter({ ...filter, ...data });
+    };
+    
 
     return (
         <header className="header">

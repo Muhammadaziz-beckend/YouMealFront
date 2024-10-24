@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
@@ -7,30 +7,42 @@ import "swiper/css";
 import "swiper/css/pagination";
 import './../static/css/swiper.css';
 
-const CategoriesSniper = ({ category,filter,setFilter }) => {
+const CategoriesSniper = ({ category = [], filter, setFilter }) => {
+  const [activeCategory, setActiveCategory] = useState(null); // Добавляем состояние для активного элемента
+
+  const handleCategoryClick = (item) => {
+    const obj = {
+      category: [item?.id]
+    };
+    setFilter({ ...filter, ...obj });
+    setActiveCategory(item?.id); // Обновляем активный элемент
+  };
+
   return (
     <>
       <Swiper
-        slidesPerView={"auto"} // Динамически подстраивает количество слайдов по ширине
-        spaceBetween={20}      // Расстояние между слайдами
+        slidesPerView={"auto"}
+        spaceBetween={20}
         pagination={{
-          clickable: true,     // Дает возможность пользователю кликать на пагинацию
+          clickable: true,
         }}
-        modules={Pagination}  // Подключаем модуль пагинации
+        modules={Pagination}
         className="swiper"
       >
-        {category?.map(item => (
-          <SwiperSlide
-            key={item?.id}    // Уникальный ключ для каждого элемента
-            className="swiper_item"
-            onClick={() => {
-              console.log(item?.name);
-            }}
-          >
-            <img src={item?.icon} alt={item?.name} />
-            <span>{item?.name}</span>
-          </SwiperSlide>
-        ))}
+        {Array.isArray(category) && category.length > 0 ? (
+          category.map(item => (
+            <SwiperSlide
+              key={item?.id}
+              className={`swiper_item ${activeCategory === item?.id ? "active" : ""}`} // Добавляем класс "active" если элемент активный
+              onClick={() => handleCategoryClick(item)} // Обработчик нажатия
+            >
+              <img src={item?.icon} alt={item?.name || "Category"} />
+              <span>{item?.name}</span>
+            </SwiperSlide>
+          ))
+        ) : (
+          <p>No categories available</p>
+        )}
       </Swiper>
     </>
   );

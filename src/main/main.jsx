@@ -1,11 +1,12 @@
 import Card from "../components/card"
 import Category from "../components/category"
+import PaginationOutlined from "../components/paginator"
 import Products from "../components/products"
 
 
 
 
-const ProjectMain = ({ category, filter, setFilter }) => {
+const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setPage, totalPages }) => {
 
     return (
         <>
@@ -15,7 +16,13 @@ const ProjectMain = ({ category, filter, setFilter }) => {
                 <div className="container">
                     <div className="main_items">
                         <Card />
-                        <Products />
+                        <Products productRef={productRef} data={data} />
+                    </div>
+                    <div className="paginator_container">
+
+                        <PaginationOutlined page={page}
+                            setPage={setPage}
+                            totalPages={totalPages} />
                     </div>
                 </div>
             </main>

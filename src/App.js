@@ -7,13 +7,25 @@ import Data from './Data/data';
 
 const App = () => {
 
-  const {category,filter,setFilter} = Data() 
+  const { category, filter, setFilter, data, productRef, page, setPage, totalPages } = Data()
 
   return (
     <Router>
-      <Header /> {/* Вы можете добавить Header, если это нужно */}
+      <Header
+        setFilter={setFilter}
+        filter={filter}
+      /> {/* Вы можете добавить Header, если это нужно */}
       <Routes>
-        <Route path='/' element={<ProjectMain category={category}  setFilter={setFilter} filter={filter}/>} /> {/* Замените Component на element */}
+        <Route path='/' element={
+          <ProjectMain
+            category={category}
+            page={page}
+            setPage={setPage}
+            totalPages={totalPages}
+            productRef={productRef}
+            data={data}
+            setFilter={setFilter}
+            filter={filter} />} /> {/* Замените Component на element */}
       </Routes>
     </Router>
   );

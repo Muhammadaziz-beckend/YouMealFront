@@ -3,8 +3,6 @@ import CategoriesSniper from "./catigory_sweper";
 
 const Category = ({ category,filter,setFilter }) => {
 
-    console.log(category);
-
 
     return (
         <nav className="nav">

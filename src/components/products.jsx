@@ -1,98 +1,31 @@
 import Photo from '../static/img/photo.png'
 
 
-const Products = () => {
+const Products = ({productRef, data }) => {
 
 
     return (
         <>
-            <section className="section_product">
+            <section className="section_product" ref={productRef}>
                 <div className="section_items">
 
                     <div className="section_products_items">
-                        <div className="product_item">
-                            <div className="top">
-                                <img src={Photo} alt="" />
+                        {data?.results?.map(item => (
+                            <div className="product_item">
+                                <div className="top">
+                                    <img src={item?.image} alt="" />
+                                </div>
+                                <div className="center">
+                                    <h4>{item?.price} KGS</h4>
+                                    <span className="name">{item?.name}</span>
+                                </div>
+                                <div className="bottom">
+                                    <span className="gram">{item?.weight}g</span>
+                                    <button className='ass_card'>Добавить</button>
+                                </div>
                             </div>
-                            <div className="center">
-                                <h4>689₽</h4>
-                                <span className="name">Мясная бомба</span>
-                            </div>
-                            <div className="bottom">
-                                <span className="gram">557g</span>
-                                <button className='ass_card'>Добавить</button>         
-                            </div>
-                        </div>
 
-                        <div className="product_item">
-                            <div className="top">
-                                <img src={Photo} alt="" />
-                            </div>
-                            <div className="center">
-                                <h4>689₽</h4>
-                                <span className="name">Мясная бомба</span>
-                            </div>
-                            <div className="bottom">
-                                <span className="gram">557g</span>
-                                <button className='ass_card'>Добавить</button>         
-                            </div>
-                        </div>
-
-                        <div className="product_item">
-                            <div className="top">
-                                <img src={Photo} alt="" />
-                            </div>
-                            <div className="center">
-                                <h4>689₽</h4>
-                                <span className="name">Мясная бомба</span>
-                            </div>
-                            <div className="bottom">
-                                <span className="gram">557g</span>
-                                <button className='ass_card'>Добавить</button>         
-                            </div>
-                        </div>
-
-                        <div className="product_item">
-                            <div className="top">
-                                <img src={Photo} alt="" />
-                            </div>
-                            <div className="center">
-                                <h4>689₽</h4>
-                                <span className="name">Мясная бомба</span>
-                            </div>
-                            <div className="bottom">
-                                <span className="gram">557g</span>
-                                <button className='ass_card'>Добавить</button>         
-                            </div>
-                        </div>
-
-                        <div className="product_item">
-                            <div className="top">
-                                <img src={Photo} alt="" />
-                            </div>
-                            <div className="center">
-                                <h4>689₽</h4>
-                                <span className="name">Мясная бомба</span>
-                            </div>
-                            <div className="bottom">
-                                <span className="gram">557g</span>
-                                <button className='ass_card'>Добавить</button>         
-                            </div>
-                        </div>
-
-                        <div className="product_item">
-                            <div className="top">
-                                <img src={Photo} alt="" />
-                            </div>
-                            <div className="center">
-                                <h4>689₽</h4>
-                                <span className="name">Мясная бомба</span>
-                            </div>
-                            <div className="bottom">
-                                <span className="gram">557g</span>
-                                <button className='ass_card'>Добавить</button>         
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
                 </div>
