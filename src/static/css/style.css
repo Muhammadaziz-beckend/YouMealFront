@@ -480,7 +480,7 @@ body {
                             width: 100%;
 
                             padding: 12px;
-                           
+
 
                             display: flex;
                             flex-direction: column;
@@ -568,7 +568,8 @@ body {
     max-width: 1440px;
     margin: 0 auto;
     width: 100%;
-    .MuiPagination-ul{
+
+    .MuiPagination-ul {
         justify-content: center;
     }
 
@@ -669,9 +670,11 @@ body {
                             max-height: 28px;
                             transition: .5s;
                             overflow-y: hidden;
-                            &.hidden{
+
+                            &.hidden {
                                 max-height: 1000px;
                             }
+
                             .none_model {
                                 /* display: none; */
                             }
@@ -777,9 +780,11 @@ body {
                             max-height: 28px;
                             transition: .5s;
                             overflow-y: hidden;
-                            &.hidden{
+
+                            &.hidden {
                                 max-height: 1000px;
                             }
+
                             .none_model {
                                 /* display: none; */
                             }
@@ -861,6 +866,135 @@ body {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.container_form {
+
+    width: 100%;
+    max-width: max-content;
+    margin: 5rem auto;
+
+    .error_from_none {
+        position: absolute;
+        top: 15%;
+        right: 20px;
+
+        transform: scale(0);
+        transition: .5s ease-in-out;
+
+        max-width: 350px;
+        padding: 15px 20px;
+    }
+
+    .error_from {
+        max-width: 350px;
+
+        position: absolute;
+        top: 15%;
+        right: 20px;
+
+        transform: scale(1);
+        transition: .5s ease;
+
+        padding: 15px 20px;
+        
+        border-radius: 10px;
+        background-color: red;
+
+        color: #fff;
+    }
+
+    .auth_login {
+
+        width: max-content;
+
+        padding: 20px 15px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        background-color: #fff;
+        border-radius: 10px;
+
+        .label {
+            position: relative;
+
+            width: 100%;
+
+            .form-control {
+                padding: 20px 0px 20px 48px;
+            }
+
+            .error {
+                color: red;
+                font-weight: 700;
+
+                width: max-content;
+            }
+
+            .input {
+                width: 100%;
+
+                padding: 10.5px 45px 10.5px 8px;
+                border-radius: 5px;
+
+                outline: none;
+                font-size: 14px;
+                border: none;
+                border: 1px solid #CACACA;
+            }
+
+            .control_type_password {
+                position: absolute;
+                top: 8.5px;
+                right: 10px;
+
+                border: none;
+                background-color: transparent;
+
+                cursor: pointer;
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+
+        .info {
+
+            display: flex;
+            flex-direction: column;
+
+            .text {
+                margin-top: 8px;
+
+                background-color: transparent;
+
+                color: rgb(0, 38, 255);
+                text-decoration: none;
+                text-align: right;
+            }
+
+            button[type="submit"] {
+        
+                padding: 11px 0px;
+        
+                border: none;
+                border-radius: 8px;
+                background-color: orange;
+        
+                color: #fff;
+                font-size: 16px;
+
+                img {
+                    width: 24px;
+                    padding: -11px 0px;
                 }
             }
         }

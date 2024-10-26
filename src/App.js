@@ -4,6 +4,7 @@ import ProjectMain from './main/main';
 import Header from './components/header';
 import './static/css/style.css'
 import Data from './Data/data';
+import MainAuth from './auth/main';
 
 const App = () => {
 
@@ -25,7 +26,9 @@ const App = () => {
             productRef={productRef}
             data={data}
             setFilter={setFilter}
-            filter={filter} />} /> {/* Замените Component на element */}
+            filter={filter} />} />
+
+          <Route path='/auth/*' element={< MainAuth/>}/>
       </Routes>
     </Router>
   );

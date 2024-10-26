@@ -13,7 +13,7 @@ const Data = () => {
 
     const productRef = useRef(null)
 
-    console.log(filter);
+    const user = localStorage.getItem('infoUserMeal')
 
     const buildUrlWithParams = (baseUrl, filters) => {
         const url = new URL(baseUrl);
@@ -27,9 +27,6 @@ const Data = () => {
             }
         }
 
-        console.log(url.toString(),filters);
-        
-
         return url.toString();
     };
 
@@ -37,6 +34,16 @@ const Data = () => {
         Get('http://127.0.0.1:8000/api/v1/category/').then(r => {
             setCategory(r?.data)
         })
+        
+        if (user) {
+
+            Get('http://127.0.0.1:8000/api/v1/orders/',user?.token).then(
+                r => {
+                    setCard(r?.data)
+                }
+            )
+        }
+
     }, [])
 
 

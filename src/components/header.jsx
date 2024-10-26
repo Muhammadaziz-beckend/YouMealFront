@@ -1,38 +1,40 @@
 import Logo from '../static/img/logo.svg'
 import Search from '../static/img/search.svg'
-import User from '../static/img/user.svg'
+import User from '../static/img/user.png'
 import Burger_menu from '../static/img/burger_menu.svg'
 import Search_media from '../static/img/search_model.png'
 import { useState } from 'react'
+import { Navigate, NavLink } from 'react-router-dom'
 
-const Header = ({filter, setFilter}) => {
+const Header = ({ filter, setFilter }) => {
 
     const [formSearch, setFormSearch] = useState(true)
 
     const headerSubmit = (event) => {
         event.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
-    
+
         const formData = new FormData(event.target); // Передаем event.target для создания FormData
-    
+
         const data = {}; // Объект для хранения данных из формы
-    
+
         // Заполняем объект данными из формы
         for (let [key, value] of formData) {
             data[key] = [value]; // Добавляем данные в объект
         }
-        
+
         console.log(data);
-        
+
         // Обновляем фильтры, передавая новые данные
         setFilter({ ...filter, ...data });
     };
-    
 
     return (
         <header className="header">
             <div className="container">
                 <div className="header_items">
-                    <img src={Logo} alt="" className="logo" />
+                    <NavLink to={'/'}>
+                        <img src={Logo} alt="" className="logo" />
+                    </NavLink>
 
                     <div className="menu">
                         <form onSubmit={headerSubmit} className={formSearch ? 'none' : ''} method="get">
@@ -48,9 +50,9 @@ const Header = ({filter, setFilter}) => {
                             <img src={Search_media} alt="" />
                         </button>
 
-                        <div className="account">
+                        <NavLink to={'/auth/login'} className="account">
                             <img src={User} alt="" />
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>
