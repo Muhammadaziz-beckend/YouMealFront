@@ -5,7 +5,7 @@ const Get = async (url,token=null) => {
 
     const config = {
         headers: {
-            'Authorization': `Bearer ${token}` // Добавляем токен в заголовок
+            'Authorization': `Token ${token}` // Добавляем токен в заголовок
         }
     }
     try {

@@ -34,21 +34,13 @@ const Data = () => {
         Get('http://127.0.0.1:8000/api/v1/category/').then(r => {
             setCategory(r?.data)
         })
-        
-        if (user) {
-
-            Get('http://127.0.0.1:8000/api/v1/orders/',user?.token).then(
-                r => {
-                    setCard(r?.data)
-                }
-            )
-        }
 
     }, [])
 
+    useEffect(() => { if (filter?.category) setPage(1)},[filter])
+
 
     useEffect(() => {
-
 
         Get(buildUrlWithParams(`http://127.0.0.1:8000/api/v1/products/?page=${page}`, filter)).then(r => {
             setData(r?.data)
@@ -58,7 +50,7 @@ const Data = () => {
             }
         })
 
-    }, [page,filter])
+    }, [page,filter,category])
 
     return {
         category,
