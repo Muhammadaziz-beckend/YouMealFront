@@ -5,40 +5,19 @@ import Motor from '../static/img/moto.svg'
 import CardItem from './card_item'
 import Get from '../routes/get.jsx'
 
-const Card = () => {
+const Card = ({user,getCartUser,dataCard,countValueInCard,finalPrise}) => {
 
     const [openCard, setOpenCard] = useState(false)
-
-    const [data, setData] = useState([])
-    const [countValueInCard, setCountValueInCard] = useState(0)
-    const [finalPrise, setFinalPrise] = useState(0)
-
-    const user = localStorage.getItem('infoUserMeal')
-
-    const updateFinalPrise = () => {
-        
-    }
 
     useEffect(() => {
 
         if (user) {
 
-            const { token } = JSON.parse(user)
-
-            Get('http://127.0.0.1:8000/api/v1/cards/', token).then(
-                r => {
-                    if (r?.status == 200) {
-                        
-                        setCountValueInCard(r.data.carts.length)
-                        setData(r?.data?.carts)
-                        setFinalPrise(r.data?.final_prise)
-                    }
-
-                }
-            )
+            getCartUser()
         }
 
     }, [])
+    
 
     return (
         <aside className="aside">
@@ -54,9 +33,9 @@ const Card = () => {
 
                     <div className={`aside_items_products ${openCard ? 'none_model' : ''}`}>
 
-                        {data.map(item => (
+                        {dataCard.map(item => (
 
-                            <CardItem user={user} data={item} countValue={item?.count_product}/>
+                            <CardItem getCartUser={getCartUser} user={user} data={item} countValue={item?.count_product}/>
                         ))}
 
                     </div>
@@ -66,7 +45,7 @@ const Card = () => {
                         <span>{finalPrise}₽</span>
                     </div>
                     
-                    {data && (<button className={`place_an_order ${openCard ? 'none_model' : ''}`}>
+                    {dataCard && (<button className={`place_an_order ${openCard ? 'none_model' : ''}`}>
                         Оформить заказ
                     </button>)}
                     

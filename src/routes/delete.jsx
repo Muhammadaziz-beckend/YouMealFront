@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const Post = async (url, data, token = null) => {
+const Delete = async (url, token) => {
 
     const config = {
         headers: {
@@ -10,14 +10,15 @@ const Post = async (url, data, token = null) => {
     }
 
     try {
-        const res = await axios.post(url, data, token ? config : '')
+        
+        const res = await axios.delete(url, token ? config : '')
 
-        console.log(res);
         return res
     } catch (error) {
         console.log(error);
         return error
     }
+
 }
 
-export default Post;
+export default Delete

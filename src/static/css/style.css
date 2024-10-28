@@ -306,6 +306,15 @@ body {
                         flex-direction: column;
                         gap: 16px;
 
+                        transition: 1s;
+                        max-height: 100000px;
+                        
+                        &.hidden {
+                            overflow-y: hidden;
+                            max-height: 28px;
+                            transition: .7s;
+                        }
+
                         .aside_blok_info {
                             display: flex;
                             align-items: center;
@@ -323,6 +332,7 @@ body {
 
 
                             .blok_item_product {
+                                position: relative;
 
                                 display: flex;
                                 align-items: center;
@@ -400,6 +410,18 @@ body {
 
                                         border: none;
                                         background-color: transparent;
+                                    }
+                                }
+
+                                .blok_delete {
+                                    cursor: pointer;
+
+                                    border: none;
+                                    background-color: transparent;
+                            
+                                    img {
+                                        width: 24px;
+                                        margin-left: 8px;
                                     }
                                 }
                             }
@@ -668,11 +690,12 @@ body {
 
                         .aside_items {
                             max-height: 28px;
-                            transition: .5s;
+                            transition: .7s;
                             overflow-y: hidden;
 
                             &.hidden {
-                                max-height: 1000px;
+                                transition: 1s;
+                                max-height: 100000px;
                             }
 
                             .none_model {
@@ -782,7 +805,8 @@ body {
                             overflow-y: hidden;
 
                             &.hidden {
-                                max-height: 1000px;
+                                transition: 1s;
+                                max-height: 100000px;
                             }
 
                             .none_model {
@@ -901,7 +925,7 @@ body {
         transition: .5s ease;
 
         padding: 15px 20px;
-        
+
         border-radius: 10px;
         background-color: red;
 
@@ -982,19 +1006,364 @@ body {
             }
 
             button[type="submit"] {
-        
+
                 padding: 11px 0px;
-        
+
                 border: none;
                 border-radius: 8px;
                 background-color: orange;
-        
+
                 color: #fff;
                 font-size: 16px;
 
                 img {
                     width: 24px;
                     padding: -11px 0px;
+                }
+            }
+        }
+    }
+}
+
+
+.blok_add_card {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    z-index: 3;
+
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+
+    .container {
+        max-width: 700px;
+
+        .blok_add_card_item {
+            margin-top: 25%;
+            padding: 24px 24px 36px 24px;
+
+            border-radius: 24px;
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+            background: rgb(255, 255, 255);
+
+            .hed_item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                color: rgb(0, 0, 0);
+                font-family: var(--Nunito);
+                font-size: 40px;
+                font-weight: 400;
+                line-height: 120%;
+
+                .close {
+
+                    cursor: pointer;
+
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+
+            .main_item {
+                margin-top: 24px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .left {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 16px;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                        border-radius: 10px;
+                    }
+
+                    .text_blok {
+                        .text {
+                            font-family: var(--Nunito);
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 130%;
+                        }
+
+                        .product_compose {
+                            list-style: none;
+
+                            b {
+                                font-size: 12px;
+                                font-weight: 800;
+                                line-height: 130%;
+                            }
+
+                            li {
+                                font-family: var(--Nunito);
+                                font-size: 12px;
+                                font-weight: 500;
+                                line-height: 130%;
+                                text-align: left;
+                            }
+                        }
+
+                        .info_caloric {
+                            color: rgb(177, 177, 177);
+                            font-family: var(--Nunito);
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 130%;
+                        }
+                    }
+                }
+
+                .right {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 16px;
+
+                    .blok_info_bey_and_prise {
+                        display: flex;
+                        align-items: center;
+                        align-items: stretch;
+                        gap: 16px;
+
+                        flex: 1;
+
+                        .add {
+                            max-width: 276px;
+                            min-width: 218px;
+                            width: 100%;
+
+                            padding: 11px 0px;
+
+                            cursor: pointer;
+
+                            color: #fff;
+                            font-family: var(--Nunito);
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 100%;
+
+                            border: none;
+                            border-radius: 12px;
+                            background: rgb(255, 112, 32);
+                        }
+
+                        .blok_place_and_minus_bey_product {
+
+                            display: flex;
+                            align-items: center;
+
+                            border-radius: 12px;
+                            background: rgb(242, 242, 243);
+
+                            button {
+                                cursor: pointer;
+                                padding: 9px 12px;
+
+                                border: none;
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .blok_add_card {
+
+        .container {
+
+            padding: 5px;
+
+            .blok_add_card_item {
+
+                .hed_item {
+
+                    .close {
+
+                        cursor: pointer;
+
+                        border: none;
+                        background-color: transparent;
+                    }
+                }
+
+                .main_item {
+
+                    .left {
+
+                        .text_blok {
+                            .text {
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 130%;
+                            }
+
+                            .product_compose {
+                                list-style: none;
+
+                                b {
+                                    font-size: 10px;
+                                }
+
+                                li {
+                                    font-size: 10px;
+                                }
+                            }
+
+                            .info_caloric {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+
+                    .right {
+                        gap: 8px;
+
+                        h2 {
+                            font-size: 26px;
+                            font-weight: 600;
+                            line-height: 130%;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:576px) {
+    .blok_add_card {
+        margin-top: 0px;
+
+        .container {
+            max-width: max-content;
+            padding: 0;
+
+            .blok_add_card_item {
+                margin-top: 0px;
+                padding: 32px 10px;
+                height: 100vh;
+
+                border-radius: 0;
+                box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+                background: rgb(255, 255, 255);
+
+                .hed_item {
+                    position: relative;
+
+                    .close {
+                        position: absolute;
+                        top: -7px;
+                        right: -7px;
+                    }
+                }
+
+                .main_item {
+                    gap: 4rem;
+
+                    .left {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+
+                        .text_blok {
+                            .text {
+                                font-family: var(--Nunito);
+                                font-size: 16px;
+                                font-weight: 400;
+                                line-height: 130%;
+                            }
+
+                            .product_compose {
+                                list-style: none;
+
+                                b {
+                                    font-size: 12px;
+                                    font-weight: 800;
+                                    line-height: 130%;
+                                }
+
+                                li {
+                                    font-family: var(--Nunito);
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    line-height: 130%;
+                                    text-align: left;
+                                }
+                            }
+
+                            .info_caloric {
+                                color: rgb(177, 177, 177);
+                                font-family: var(--Nunito);
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 130%;
+                            }
+                        }
+                    }
+
+                    .right {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 16px;
+
+                        .add {
+
+                            max-width: none !important;
+                            min-width: none !important;
+                            width: 100%;
+
+                            padding: 11px 0px;
+                        }
+
+                        .blok_info_bey_and_prise {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .blok_place_and_minus_bey_product {
+
+                                display: flex;
+                                align-items: center;
+                                flex: none;
+
+                                border-radius: 12px;
+                                background: rgb(242, 242, 243);
+
+                                button {
+                                    cursor: pointer;
+                                    padding: 9px 12px;
+
+                                    border: none;
+                                    background-color: transparent;
+                                }
+                            }
+
+                        }
+
+                        h2 {
+                            font-size: 26px;
+                            font-weight: 600;
+                            line-height: 130%;
+                            text-align: right;
+                        }
+                    }
                 }
             }
         }

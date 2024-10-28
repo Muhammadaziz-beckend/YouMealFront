@@ -1,7 +1,4 @@
-import Photo from '../static/img/photo.png'
-
-
-const Products = ({productRef, data }) => {
+const Products = ({productRef, data,setBlok,setBlokData }) => {
 
 
     return (
@@ -21,7 +18,7 @@ const Products = ({productRef, data }) => {
                                 </div>
                                 <div className="bottom">
                                     <span className="gram">{item?.weight}g</span>
-                                    <button className='ass_card'>Добавить</button>
+                                    <button onClick={() => {setBlokData(item) ; setBlok(true)}} className='ass_card'>Добавить</button>
                                 </div>
                             </div>
 
