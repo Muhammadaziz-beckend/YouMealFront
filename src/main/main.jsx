@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import BlokAddCard from "../components/blokAddCard"
 import Card from "../components/card"
 import Category from "../components/category"
@@ -9,13 +9,27 @@ import Get from "../routes/get"
 const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setPage, totalPages }) => {
 
     const [blok,setBlok] = useState(false)
+    const [blokBey,setBlokBey] = useState(false)
     const [blokData,setBlokData] = useState({})
+
+    const [arrIdCard,setArrIdCard] = useState([])
 
     const [dataCard, setDataCard] = useState([])
     const [countValueInCard, setCountValueInCard] = useState(0)
     const [finalPrise, setFinalPrise] = useState(0)
 
     const user = localStorage.getItem('infoUserMeal')
+
+    useEffect(() => {
+
+        setArrIdCard(dataCard?.reduce((acc,item) => {
+            console.log(item);
+            acc.push(item.id)
+            return acc
+        },[]))
+        
+
+    },[dataCard])
 
     const getCartUser = async () => {
         const user = localStorage.getItem('infoUserMeal')
@@ -34,6 +48,10 @@ const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setP
         )
     }
 
+    useEffect(() => {
+        getCartUser()
+    },[])
+
     return (
         <>
             <Category category={category} filter={filter} setFilter={setFilter} />
@@ -41,9 +59,9 @@ const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setP
             <main className="main">
                 <div className="container">
                     <div className="main_items">
-                        <Card user={user} countValueInCard={countValueInCard} finalPrise={finalPrise} blok={blok} getCartUser={getCartUser} dataCard={dataCard}/>
+                        <Card arrIdCard={arrIdCard} blokBey={blokBey} setBlokBey={setBlokBey} user={user} countValueInCard={countValueInCard} finalPrise={finalPrise} blok={blok} getCartUser={getCartUser} dataCard={dataCard}/>
                         <Products setBlokData={setBlokData} setBlok={setBlok} productRef={productRef} data={data} />
-                        {blok && (<BlokAddCard getCartUser={getCartUser} blokData={blokData} setBlok={setBlok}/>)}
+                        {blok && (<BlokAddCard  getCartUser={getCartUser} blokData={blokData} setBlok={setBlok}/>)}
                         
                     </div>
                     <div className="paginator_container">

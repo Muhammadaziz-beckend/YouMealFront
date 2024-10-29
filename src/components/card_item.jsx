@@ -58,7 +58,7 @@ const CardItem = ({ user, data, countValue,getCartUser }) => {
                     }>+</button>
                 </div>
                 <button type="button" onClick={() => DeleteInItem(data?.id)} className="blok_delete">
-                    <img src={Delete} alt="" />
+                    <img src={Delete}/>
                 </button>
             </div>
         </>

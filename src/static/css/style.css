@@ -308,7 +308,7 @@ body {
 
                         transition: 1s;
                         max-height: 100000px;
-                        
+
                         &.hidden {
                             overflow-y: hidden;
                             max-height: 28px;
@@ -418,7 +418,7 @@ body {
 
                                     border: none;
                                     background-color: transparent;
-                            
+
                                     img {
                                         width: 24px;
                                         margin-left: 8px;
@@ -1362,6 +1362,223 @@ body {
                             font-weight: 600;
                             line-height: 130%;
                             text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.blok_bey_products {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    z-index: 3;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.8);
+
+    .container {
+        max-width: 700px;
+
+        .blok_bey_product_item {
+            margin-top: 25%;
+
+            display: flex;
+
+            border-radius: 24px;
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+            background: rgb(249, 249, 249);
+
+            .left {
+                width: 100%;
+                padding: 25px 21px;
+
+                background: rgb(255, 171, 8);
+                border-radius: 24px 0px 0px 24px;
+
+                img {
+                    width: 100%;
+                    margin-top: 25%;
+                }
+            }
+
+            .right {
+                width: -webkit-fill-available;
+
+                padding: 44px 24px 24px;
+
+                .hed_blok_bey {
+                    display: flex;
+                    justify-content: space-between;
+
+                    h2 {
+                        font-family: var(--Nunito);
+                        font-size: 24px;
+                        font-weight: 700;
+                        line-height: 100%;
+                    }
+
+                    .close {
+                        position: relative;
+                        top: -25px;
+
+                        cursor: pointer;
+
+                        padding: 10px;
+                        border: none;
+                        background-color: transparent;
+                    }
+                }
+
+                .form {
+                    display: flex;
+                    flex-direction: column;
+                    height: 20rem;
+
+                    .blok_from_items {
+                        display: flex;
+                        flex-direction: column;
+                        flex: auto;
+                        gap: 8px;
+
+                        .blok_form_item_radio {
+
+                            display: flex;
+                            flex-direction: column;
+                            gap: 12px;
+
+                            label {
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                            }
+                        }
+
+                        .label {
+                            display: flex;
+                            flex-direction: column;
+
+
+                            input {
+                                padding: 12px;
+
+                                outline: none;
+
+                                border: 1px solid rgb(242, 242, 243);
+                                border-radius: 12px;
+                                background: rgb(255, 255, 255);
+                            }
+                        }
+
+                        .label_items {
+                            display: flex;
+                            gap: 8px;
+
+                            input {
+                                width: 100%;
+
+                                padding: 12px;
+
+                                outline: none;
+
+                                border: 1px solid rgb(242, 242, 243);
+                                border-radius: 12px;
+                                background: rgb(255, 255, 255);
+                            }
+                        }
+                    }
+
+                    button {
+                        /* margin-top: 32px; */
+
+                        width: 100%;
+
+                        padding: 11px 0px;
+
+                        border: none;
+                        border-radius: 12px;
+                        background: rgb(255, 112, 32);
+
+                        color: rgb(255, 255, 255);
+                        font-family: var(--Nunito);
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:520px) {
+
+    .blok_bey_products {
+        flex-direction: column;
+
+        .container {
+
+            .blok_bey_product_item {
+                margin-top: 0px;
+
+                border-radius: 0px;
+
+                .left {
+                    display: none;
+
+                    img {}
+                }
+
+                .right {
+                    height: 100vh;
+
+                    .hed_blok_bey {
+
+                        h2 {
+                            font-size: 28px;
+                        }
+
+                        .close {
+
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    .form {
+
+                        .blok_from_items {
+                            gap: 24px;
+
+                            .blok_form_item_radio {
+                                label {
+                                    span {
+                                        font-family: var(--Nunito);
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                        line-height: 14px;
+                                        letter-spacing: 0%;
+                                        text-align: left;
+                                    }
+                                }
+                            }
+
+                            .label {}
+
+                            .label_items {}
+                        }
+
+                        button {
+                            position: absolute;
+                            left: 0px;
+                            bottom: 20px;
                         }
                     }
                 }
