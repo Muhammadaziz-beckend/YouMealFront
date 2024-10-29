@@ -8,7 +8,7 @@ import MainAuth from './auth/main';
 
 const App = () => {
 
-  const { category, filter, setFilter, data, productRef, page, setPage, totalPages } = Data()
+  const { category, filter, setFilter, data, productRef, page, setPage, totalPages, getProduct } = Data()
 
   return (
     <Router>
@@ -26,9 +26,13 @@ const App = () => {
             productRef={productRef}
             data={data}
             setFilter={setFilter}
-            filter={filter} />} />
+            filter={filter}
+            getProduct={getProduct}
+          />
+        }
+        />
 
-          <Route path='/auth/*' element={< MainAuth/>}/>
+        <Route path='/auth/*' element={< MainAuth />} />
       </Routes>
     </Router>
   );

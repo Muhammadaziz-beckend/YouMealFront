@@ -6,13 +6,13 @@ import PaginationOutlined from "../components/paginator"
 import Products from "../components/products"
 import Get from "../routes/get"
 
-const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setPage, totalPages }) => {
+const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setPage, totalPages,getProduct }) => {
 
-    const [blok,setBlok] = useState(false)
-    const [blokBey,setBlokBey] = useState(false)
-    const [blokData,setBlokData] = useState({})
+    const [blok, setBlok] = useState(false)
+    const [blokBey, setBlokBey] = useState(false)
+    const [blokData, setBlokData] = useState({})
 
-    const [arrIdCard,setArrIdCard] = useState([])
+    const [arrIdCard, setArrIdCard] = useState([])
 
     const [dataCard, setDataCard] = useState([])
     const [countValueInCard, setCountValueInCard] = useState(0)
@@ -22,47 +22,51 @@ const ProjectMain = ({ category, filter, setFilter, data, productRef, page, setP
 
     useEffect(() => {
 
-        setArrIdCard(dataCard?.reduce((acc,item) => {
+        setArrIdCard(dataCard?.reduce((acc, item) => {
             console.log(item);
             acc.push(item.id)
             return acc
-        },[]))
-        
+        }, []))
 
-    },[dataCard])
+
+    }, [dataCard])
 
     const getCartUser = async () => {
         const user = localStorage.getItem('infoUserMeal')
-        const { token } = JSON.parse(user)
-        
-        await Get('http://127.0.0.1:8000/api/v1/cards/', token).then(
-            r => {
-                
-                if (r?.status === 200 || r?.status === 201) {
-                    
-                    setCountValueInCard(r.data.carts.length)
-                    setDataCard(r?.data?.carts)
-                    setFinalPrise(r.data?.final_prise)
+
+        if (user) {
+            const { token } = JSON.parse(user)
+
+            await Get('http://127.0.0.1:8000/api/v1/cards/', token).then(
+                r => {
+
+                    if (r?.status === 200 || r?.status === 201) {
+
+                        setCountValueInCard(r.data.carts.length)
+                        setDataCard(r?.data?.carts)
+                        setFinalPrise(r.data?.final_prise)
+                    }
                 }
-            }
-        )
+            )
+        }
+
     }
 
     useEffect(() => {
         getCartUser()
-    },[])
+    }, [])
 
     return (
         <>
-            <Category category={category} filter={filter} setFilter={setFilter} />
+            <Category getProduct={getProduct} category={category} filter={filter} setFilter={setFilter} />
 
             <main className="main">
                 <div className="container">
                     <div className="main_items">
-                        <Card arrIdCard={arrIdCard} blokBey={blokBey} setBlokBey={setBlokBey} user={user} countValueInCard={countValueInCard} finalPrise={finalPrise} blok={blok} getCartUser={getCartUser} dataCard={dataCard}/>
+                        <Card arrIdCard={arrIdCard} blokBey={blokBey} setBlokBey={setBlokBey} user={user} countValueInCard={countValueInCard} finalPrise={finalPrise} blok={blok} getCartUser={getCartUser} dataCard={dataCard} />
                         <Products setBlokData={setBlokData} setBlok={setBlok} productRef={productRef} data={data} />
-                        {blok && (<BlokAddCard  getCartUser={getCartUser} blokData={blokData} setBlok={setBlok}/>)}
-                        
+                        {blok && (<BlokAddCard getCartUser={getCartUser} blokData={blokData} setBlok={setBlok} />)}
+
                     </div>
                     <div className="paginator_container">
 

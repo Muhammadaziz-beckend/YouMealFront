@@ -5,13 +5,14 @@ import Post from '../routes/post.jsx'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Bey = ({ blokBey, setBlokBey,arrIdCard }) => {
+const Bey = ({ blokBey, setBlokBey, arrIdCard }) => {
 
     let navigator = useNavigate()
 
     const [blokAddress, setBlokAddress] = useState(true)
     const user = localStorage.getItem('infoUserMeal')
 
+    const [errorPromoCode, setErrorPromoCode] = useState('')
 
     const headerSubmit = (event) => {
 
@@ -51,9 +52,15 @@ const Bey = ({ blokBey, setBlokBey,arrIdCard }) => {
                     data2['user'] = id
                     data2['address'] = r?.data?.id
 
-                    Post('http://127.0.0.1:8000/api/v1/orders/',data2,token).then(r => {
+                    Post('http://127.0.0.1:8000/api/v1/orders/', data2, token).then(r => {
+                        if (r?.status == 201) {
+                            navigator('/auth/login')
+                        } else {
+                            setErrorPromoCode(r?.response?.data[0])
+
+                            setTimeout(() => setErrorPromoCode(''),4000)
+                        }
                         console.log(r);
-                        navigator('/auth/login')
                     })
                 }
             }
@@ -118,6 +125,9 @@ const Bey = ({ blokBey, setBlokBey,arrIdCard }) => {
 
                                     <label className='label'>
                                         <input type="text" name='promo_code' placeholder='Промокод если есть' />
+                                        {errorPromoCode ? (
+                                            <p style={{color:'red'}}>{errorPromoCode}</p>
+                                        ): ''}
                                     </label>
 
                                 </div>

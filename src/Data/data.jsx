@@ -13,7 +13,8 @@ const Data = () => {
 
     const productRef = useRef(null)
 
-    const user = localStorage.getItem('infoUserMeal')
+    // const user = localStorage.getItem('infoUserMeal')
+
 
     const buildUrlWithParams = (baseUrl, filters) => {
         const url = new URL(baseUrl);
@@ -39,9 +40,7 @@ const Data = () => {
 
     useEffect(() => { if (filter?.category) setPage(1)},[filter])
 
-
-    useEffect(() => {
-
+    const getProduct = () => {
         Get(buildUrlWithParams(`http://127.0.0.1:8000/api/v1/products/?page=${page}`, filter)).then(r => {
             setData(r?.data)
             setTotalPages(Math.ceil(r?.data?.count / 6))
@@ -49,6 +48,12 @@ const Data = () => {
                 productRef.current.scrollIntoView({ behavior: 'smooth' });
             }
         })
+    }
+
+
+    useEffect(() => {
+
+        getProduct()
 
     }, [page,filter,category])
 
@@ -63,6 +68,8 @@ const Data = () => {
         page,
         setPage,
         totalPages,
+
+        getProduct
     }
 
 }

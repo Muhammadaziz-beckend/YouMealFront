@@ -7,15 +7,37 @@ import "swiper/css";
 import "swiper/css/pagination";
 import './../static/css/swiper.css';
 
-const CategoriesSniper = ({ category = [], filter, setFilter }) => {
+const CategoriesSniper = ({ category = [], filter, setFilter,getProduct }) => {
   const [activeCategory, setActiveCategory] = useState(null); // Добавляем состояние для активного элемента
 
   const handleCategoryClick = (item) => {
-    const obj = {
-      category: [item?.id]
-    };
-    setFilter({ ...filter, ...obj });
-    setActiveCategory(item?.id); // Обновляем активный элемент
+
+
+    if (filter?.category) {
+
+      if (filter?.category[0] == item?.id) {
+        delete filter?.category
+        setActiveCategory(null)
+        setFilter(filter)
+        getProduct()
+      } else {
+        const obj = {
+          category: [item?.id]
+        };
+        setFilter({ ...filter, ...obj });
+        setActiveCategory(item?.id);
+      }
+
+    } else {
+      const obj = {
+        category: [item?.id]
+      };
+      setFilter({ ...filter, ...obj });
+      setActiveCategory(item?.id);
+    }
+
+
+
   };
 
   return (
