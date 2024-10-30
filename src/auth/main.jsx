@@ -4,11 +4,14 @@ import { useEffect } from 'react';
 import Login from './login.jsx'
 import Logout from '../components/auth/logout.jsx'
 import Register from './register.jsx';
-import UserOrders from '../components/auth/userProfilte.jsx';
+import UserProfile from '../components/auth/userProfile.jsx';
 import Left from '../components/auth/left.jsx';
 import ChangPassword from '../components/auth/chengPassword.jsx';
+import UserOrders from '../components/auth/userOrders.jsx';
+import UserHistory from '../components/auth/hestory.jsx';
 
 const MainAuth = () => {
+
 
 
     let navigate = useNavigate()
@@ -24,7 +27,7 @@ const MainAuth = () => {
             navigate('/auth/')
         }
 
-    }, [navigate,locate?.pathname,user])
+    }, [navigate, locate?.pathname, user])
 
     return (
         <Routes>
@@ -35,7 +38,7 @@ const MainAuth = () => {
                     <div className="container">
                         <div className="auth_items">
                             <Left />
-                            <UserOrders />
+                            <UserProfile />
                         </div>
                     </div>
                 </div>
@@ -50,7 +53,27 @@ const MainAuth = () => {
                     </div>
                 </div>
             } />
-             <Route path='/logout' element={<Logout />} />
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/orders' element={
+                <div className='auth'>
+                    <div className="container">
+                        <div className="auth_items">
+                            <Left />
+                            <UserOrders />
+                        </div>
+                    </div>
+                </div>
+            } />
+            <Route path='/history' element={
+                <div className='auth'>
+                    <div className="container">
+                        <div className="auth_items">
+                            <Left />
+                            <UserHistory />
+                        </div>
+                    </div>
+                </div>
+            } />
         </Routes>
     )
 }
