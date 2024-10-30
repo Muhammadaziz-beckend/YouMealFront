@@ -18,8 +18,8 @@ const Left = () => {
                         <NavLink className={'link'} to={''}>Заказы</NavLink>
                         <NavLink className={`link ${navigate.pathname == '/auth/' ? 'cheng' : null }`} to={'/auth/'}>Профиль</NavLink>
                         <NavLink className={'link'} to={''}>История заказов</NavLink>
-                        <NavLink className={`link ${navigate.pathname == '/auth/chang-password' ? 'cheng' : null }`} to={'chang-password'}>Сменить пароль</NavLink>
-                        <NavLink className={'link'} to={''}>Выйти</NavLink>
+                        <NavLink className={`link ${navigate.pathname == '/auth/chang-password' ? 'cheng' : null }`} to={'chang-password/'}>Сменить пароль</NavLink>
+                        <NavLink className={'link'} to={'/auth/logout/'}>Выйти</NavLink>
                     </div>
                 </div>
             </aside>

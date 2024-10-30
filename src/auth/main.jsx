@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import Login from './login.jsx'
-import { useEffect } from 'react';
+import Logout from '../components/auth/logout.jsx'
 import Register from './register.jsx';
 import UserOrders from '../components/auth/userProfilte.jsx';
 import Left from '../components/auth/left.jsx';
 import ChangPassword from '../components/auth/chengPassword.jsx';
 
 const MainAuth = () => {
-
 
 
     let navigate = useNavigate()
@@ -24,7 +24,7 @@ const MainAuth = () => {
             navigate('/auth/')
         }
 
-    }, [navigate])
+    }, [navigate,locate?.pathname,user])
 
     return (
         <Routes>
@@ -50,6 +50,7 @@ const MainAuth = () => {
                     </div>
                 </div>
             } />
+             <Route path='/logout' element={<Logout />} />
         </Routes>
     )
 }

@@ -60,7 +60,7 @@ const Login = () => {
                 r => {
                     if (r?.status == 200) {
                         localStorage.setItem('infoUserMeal', JSON.stringify(r?.data))
-                        navigate('/auth/')
+                        return navigate('/auth/')
                     } else {
                         setError(r?.response?.data?.detail)
 
