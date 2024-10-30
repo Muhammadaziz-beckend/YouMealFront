@@ -14,10 +14,8 @@ const Logout = () => {
 
     Post(`http://127.0.0.1:8000/api/v1/auth/logout/`, null, token).then(
         r => {
-            if (r?.status == 200) {
-                localStorage.removeItem('infoUserMeal')
-                navigate('/')
-            }
+            localStorage.removeItem('infoUserMeal')
+            return navigate('/')
         }
     )
 }
