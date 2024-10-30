@@ -1,11 +1,11 @@
 .swiper {
     width: 100%;
     height: 45px;
-}
 
-.active {
-    color: white;
-    background: rgb(255, 171, 8);
+    .active {
+        background: rgb(255, 171, 8);
+        color: white;
+    }
 }
 
 .swiper-slide {
