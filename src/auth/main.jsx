@@ -20,14 +20,15 @@ const MainAuth = ({ApiUrl}) => {
 
 
     useEffect(() => {
-
-        if (!user) { navigate('/auth/login') }
-        else if (locate?.pathname == '/auth/register' && !user) { }
-        else if (user && (locate.pathname == '/auth/login' || locate.pathname == '/auth/register')) {
+        if (!user) {
+            navigate('/auth/login')
+        } else if (locate.pathname === '/auth/register' && user) {
+            navigate('/auth/register')
+        } else if (user && (locate.pathname === '/auth/login' || locate.pathname === '/auth/register')) {
             navigate('/auth/')
         }
-
-    }, [navigate, locate?.pathname, user])
+    }, [user])
+    
 
     return (
         <Routes>
