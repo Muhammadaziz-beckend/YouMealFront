@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Get from "../../routes/get.jsx";
 import Patch from "../../routes/patch.jsx";
 
-const UserOrders = () => {  // Renamed to start with uppercase
+const UserOrders = ({ApiUrl}) => {  // Renamed to start with uppercase
     const [first_name, setFirst_name] = useState(null);
     const [last_name, setLast_name] = useState(null);
     const [email, setEmail] = useState(null);
@@ -36,10 +36,10 @@ const UserOrders = () => {  // Renamed to start with uppercase
             console.log(user);
             
 
-            Patch(`http://127.0.0.1:8000/api/v1/auth/profile/${id}/`,data,token).then(
+            Patch(`${ApiUrl}api/v1/auth/profile/${id}/`,data,token).then(
                 r => {
                     if (r?.status == 200) {
-                        Get('http://127.0.0.1:8000/api/v1/auth/profile/',token).then(
+                        Get(`${ApiUrl}api/v1/auth/profile/`,token).then(
                             re => {
                                 if (re?.status == 200) {
                                     let data2 = re?.data

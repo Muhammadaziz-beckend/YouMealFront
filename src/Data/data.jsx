@@ -11,6 +11,8 @@ const Data = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [products, setProducts] = useState([]);
 
+    const ApiUrl = 'https://youmeal.onrender.com/'
+
     const productRef = useRef(null)
 
     // const user = localStorage.getItem('infoUserMeal')
@@ -32,7 +34,7 @@ const Data = () => {
     };
 
     useEffect(() => {
-        Get('http://127.0.0.1:8000/api/v1/category/').then(r => {
+        Get(`${ApiUrl}api/v1/category/`).then(r => {
             setCategory(r?.data)
         })
 
@@ -41,7 +43,7 @@ const Data = () => {
     useEffect(() => { if (filter?.category) setPage(1)},[filter])
 
     const getProduct = () => {
-        Get(buildUrlWithParams(`http://127.0.0.1:8000/api/v1/products/?page=${page}`, filter)).then(r => {
+        Get(buildUrlWithParams(`${ApiUrl}api/v1/products/?page=${page}`, filter)).then(r => {
             setData(r?.data)
             setTotalPages(Math.ceil(r?.data?.count / 6))
             if (productRef.current) {
@@ -64,6 +66,7 @@ const Data = () => {
         data,
 
         productRef,
+        ApiUrl,
 
         page,
         setPage,

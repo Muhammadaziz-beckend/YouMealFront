@@ -5,7 +5,7 @@ import UserOrder from "./userOrder"
 
 
 
-const UserHistory = () => {
+const UserHistory = ({ApiUrl}) => {
 
     const [data,setData] = useState([])
 
@@ -14,7 +14,7 @@ const UserHistory = () => {
     useEffect(() => {
 
         const {token} = user
-        Get('http://127.0.0.1:8000/api/v1/auth/history/',token).then(
+        Get(`${ApiUrl}api/v1/auth/history/`,token).then(
             r => {
                 setData(r?.data)
             }

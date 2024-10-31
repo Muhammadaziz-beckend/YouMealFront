@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom"
 
 
 
-const Left = () => {
+const Left = ({ApiUrl}) => {
     let navigate = useLocation()
     const [chang,setChang] = useState('')
 

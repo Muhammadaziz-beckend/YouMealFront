@@ -8,7 +8,7 @@ import Loading from '../static/img/loading.gif'
 import Post from "../routes/post"
 
 
-const Register = () => {
+const Register = ({ApiUrl}) => {
     const navigate = useNavigate()
 
     const passwordRef = useRef()
@@ -48,7 +48,7 @@ const Register = () => {
             if (data?.password.length > 7) {
 
                 setLoading(true)
-                Post('http://127.0.0.1:8000/api/v1/auth/register/', data).then(
+                Post(`${ApiUrl}api/v1/auth/register/`, data).then(
                     r => {
 
                         if (r?.status === 201) {

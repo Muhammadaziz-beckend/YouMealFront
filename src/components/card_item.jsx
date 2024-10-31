@@ -4,7 +4,7 @@ import Post from '../routes/post.jsx'
 import DeleteItem from "../routes/delete.jsx"
 import Delete from '../static/img/delete.svg'
 
-const CardItem = ({ user, data, countValue,getCartUser }) => {
+const CardItem = ({ user, data, countValue,getCartUser,ApiUrl }) => {
 
     const [valueProduct, setValueProduct] = useState(countValue)
 
@@ -20,7 +20,7 @@ const CardItem = ({ user, data, countValue,getCartUser }) => {
         if (user) {
             const { token } = JSON.parse(user)
 
-            Post(`http://127.0.0.1:8000/api/v1/cards/change-product-quantity/${data?.id}/`, date, token).then
+            Post(`${ApiUrl}api/v1/cards/change-product-quantity/${data?.id}/`, date, token).then
                 (
                     r => {}
                 )
@@ -32,7 +32,7 @@ const CardItem = ({ user, data, countValue,getCartUser }) => {
 
         const { token } = JSON.parse(user)
 
-        DeleteItem(`http://127.0.0.1:8000/api/v1/cards/${id}/`,token).then(r => {getCartUser()})
+        DeleteItem(`${ApiUrl}/api/v1/cards/${id}/`,token).then(r => {getCartUser()})
 
     }
 

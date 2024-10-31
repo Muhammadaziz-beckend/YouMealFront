@@ -4,7 +4,7 @@ import Loading from '../../static/img/loading.gif'
 import Post from "../../routes/post"
 
 
-const ChangPassword = () => {
+const ChangPassword = ({ApiUrl}) => {
 
     const [errorPassword2, setErrorPassword2] = useState('')
     const [errorOldPassword, setErrorOldPassword] = useState('')
@@ -35,18 +35,13 @@ const ChangPassword = () => {
             SetTimeout(setErrorPassword2, '', 4)
         } else {
 
-            // if (data?.new_password?.length < 7) {
-            //     setErrorPassword2('Длина пароли должен быть больше 7 символов!')
-            //     return SetTimeout(setErrorPassword2, '', 4)
-            // }
-
             const { token } = JSON.parse(user)
 
             delete data?.password2
 
 
             setLoading(true)
-            Post(`http://127.0.0.1:8000/api/v1/auth/chang-password/`, data, token).then(
+            Post(`${ApiUrl}api/v1/auth/chang-password/`, data, token).then(
                 r => {
                     if (r?.status == 200) {
                         setErrorPassword2('Пароль успешно сменён')

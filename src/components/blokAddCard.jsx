@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Post from '../routes/post'
 import Loading from '../static/img/loading.gif'
 
-const BlokAddCard = ({ blokData, setBlok, getCartUser }) => {
+const BlokAddCard = ({ blokData, setBlok, getCartUser,ApiUrl }) => {
 
     let navigate = useNavigate()
 
@@ -26,7 +26,7 @@ const BlokAddCard = ({ blokData, setBlok, getCartUser }) => {
             }
 
             setLoading(!loading)
-            Post('http://127.0.0.1:8000/api/v1/cards/', date, token).then(
+            Post(`${ApiUrl}api/v1/cards/`, date, token).then(
                 r => {
                     if (r?.status == 201 || r?.status == 200) {
                         setBlok(false)

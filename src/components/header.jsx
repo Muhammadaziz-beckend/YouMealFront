@@ -3,10 +3,11 @@ import Search from '../static/img/search.svg'
 import User from '../static/img/user.png'
 import Burger_menu from '../static/img/burger_menu.svg'
 import Search_media from '../static/img/search_model.png'
+
 import { useState } from 'react'
 import { Navigate, NavLink } from 'react-router-dom'
 
-const Header = ({ filter, setFilter }) => {
+const Header = ({ filter, setFilter,ApiUrl }) => {
 
     const [formSearch, setFormSearch] = useState(true)
 

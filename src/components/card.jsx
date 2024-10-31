@@ -4,7 +4,7 @@ import Motor from '../static/img/moto.svg'
 import CardItem from './card_item'
 import Bey from './bey'
 
-const Card = ({ user, getCartUser, dataCard, countValueInCard, finalPrise,arrIdCard , blokBey, setBlokBey }) => {
+const Card = ({ user, getCartUser, dataCard, countValueInCard,ApiUrl, finalPrise,arrIdCard , blokBey, setBlokBey }) => {
 
     const [openCard, setOpenCard] = useState(false)
 
@@ -35,7 +35,7 @@ const Card = ({ user, getCartUser, dataCard, countValueInCard, finalPrise,arrIdC
 
                             {dataCard.map(item => (
 
-                                <CardItem getCartUser={getCartUser} user={user} data={item} countValue={item?.count_product} />
+                                <CardItem ApiUrl={ApiUrl} getCartUser={getCartUser} user={user} data={item} countValue={item?.count_product} />
                             ))}
 
                         </div>
@@ -69,7 +69,7 @@ const Card = ({ user, getCartUser, dataCard, countValueInCard, finalPrise,arrIdC
                     </div>
                 </div>
             </aside>
-            {blokBey && (<Bey arrIdCard={arrIdCard} blokBey={blokBey} setBlokBey={setBlokBey}/>)}
+            {blokBey && (<Bey ApiUrl={ApiUrl} arrIdCard={arrIdCard} blokBey={blokBey} setBlokBey={setBlokBey}/>)}
         </>
     )
 }

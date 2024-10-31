@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import Post from "../../routes/post"
-import { useEffect } from "react"
 
 
-const Logout = () => {
+const Logout = ({ApiUrl}) => {
     let navigate = useNavigate()
 
     if (!localStorage.getItem('infoUserMeal')) return navigate('/auth/login')
@@ -12,7 +11,7 @@ const Logout = () => {
     console.log(token);
 
 
-    Post(`http://127.0.0.1:8000/api/v1/auth/logout/`, null, token).then(
+    Post(`${ApiUrl}api/v1/auth/logout/`, null, token).then(
         r => {
             localStorage.removeItem('infoUserMeal')
             return navigate('/')

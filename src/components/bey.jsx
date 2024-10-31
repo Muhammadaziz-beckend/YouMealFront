@@ -5,7 +5,7 @@ import Post from '../routes/post.jsx'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Bey = ({ blokBey, setBlokBey, arrIdCard }) => {
+const Bey = ({ blokBey, setBlokBey, arrIdCard,ApiUrl }) => {
 
     let navigator = useNavigate()
 
@@ -44,7 +44,7 @@ const Bey = ({ blokBey, setBlokBey, arrIdCard }) => {
         console.log(data, data2);
         // http://127.0.0.1:8000/api/v1/address/
 
-        Post('http://127.0.0.1:8000/api/v1/address/', data, token).then(
+        Post(`${ApiUrl}api/v1/address/`, data, token).then(
             r => {
                 if (r?.status === 201) {
 
@@ -52,7 +52,7 @@ const Bey = ({ blokBey, setBlokBey, arrIdCard }) => {
                     data2['user'] = id
                     data2['address'] = r?.data?.id
 
-                    Post('http://127.0.0.1:8000/api/v1/orders/', data2, token).then(r => {
+                    Post(`${ApiUrl}api/v1/orders/`, data2, token).then(r => {
                         if (r?.status == 201) {
                             navigator('/auth/login')
                         } else {

@@ -5,7 +5,7 @@ import UserOrder from "./userOrder"
 
 
 
-const UserOrders = () => {
+const UserOrders = ({ApiUrl}) => {
 
     const [data,setData] = useState([])
 
@@ -14,7 +14,7 @@ const UserOrders = () => {
     useEffect(() => {
 
         const {token} = user
-        Get('http://127.0.0.1:8000/api/v1/auth/order/',token).then(
+        Get(`${ApiUrl}api/v1/auth/order/`,token).then(
             r => {
                 setData(r?.data)
             }

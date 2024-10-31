@@ -8,13 +8,14 @@ import MainAuth from './auth/main';
 
 const App = () => {
 
-  const { category, filter, setFilter, data, productRef, page, setPage, totalPages, getProduct } = Data()
+  const { category, filter, setFilter, data, productRef, page, setPage, totalPages, getProduct,ApiUrl } = Data()
 
   return (
     <Router>
       <Header
         setFilter={setFilter}
         filter={filter}
+        ApiUrl={ApiUrl}
       /> {/* Вы можете добавить Header, если это нужно */}
       <Routes>
         <Route path='/' element={
@@ -28,11 +29,12 @@ const App = () => {
             setFilter={setFilter}
             filter={filter}
             getProduct={getProduct}
+            ApiUrl={ApiUrl}
           />
         }
         />
 
-        <Route path='/auth/*' element={< MainAuth />} />
+        <Route path='/auth/*' element={< MainAuth ApiUrl={ApiUrl} />} />
       </Routes>
     </Router>
   );

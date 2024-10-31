@@ -10,7 +10,7 @@ import ChangPassword from '../components/auth/chengPassword.jsx';
 import UserOrders from '../components/auth/userOrders.jsx';
 import UserHistory from '../components/auth/hestory.jsx';
 
-const MainAuth = () => {
+const MainAuth = ({ApiUrl}) => {
 
 
 
@@ -31,14 +31,14 @@ const MainAuth = () => {
 
     return (
         <Routes>
-            <Route path='login/' element={<Login />} />
-            <Route path='register/' element={<Register />} />
+            <Route path='login/' element={<Login ApiUrl={ApiUrl}/>} />
+            <Route path='register/' element={<Register ApiUrl={ApiUrl}/>} />
             <Route path='/' element={
                 <div className='auth'>
                     <div className="container">
                         <div className="auth_items">
-                            <Left />
-                            <UserProfile />
+                            <Left ApiUrl={ApiUrl} />
+                            <UserProfile ApiUrl={ApiUrl}/>
                         </div>
                     </div>
                 </div>
@@ -47,19 +47,19 @@ const MainAuth = () => {
                 <div className='auth'>
                     <div className="container">
                         <div className="auth_items">
-                            <Left />
-                            <ChangPassword />
+                            <Left ApiUrl={ApiUrl}/>
+                            <ChangPassword ApiUrl={ApiUrl}/>
                         </div>
                     </div>
                 </div>
             } />
-            <Route path='/logout' element={<Logout />} />
+            <Route path='/logout' element={<Logout ApiUrl={ApiUrl}/>} />
             <Route path='/orders' element={
                 <div className='auth'>
                     <div className="container">
                         <div className="auth_items">
-                            <Left />
-                            <UserOrders />
+                            <Left ApiUrl={ApiUrl}/>
+                            <UserOrders ApiUrl={ApiUrl}/>
                         </div>
                     </div>
                 </div>
@@ -68,8 +68,8 @@ const MainAuth = () => {
                 <div className='auth'>
                     <div className="container">
                         <div className="auth_items">
-                            <Left />
-                            <UserHistory />
+                            <Left ApiUrl={ApiUrl} />
+                            <UserHistory ApiUrl={ApiUrl}/>
                         </div>
                     </div>
                 </div>

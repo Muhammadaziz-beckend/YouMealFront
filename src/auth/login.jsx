@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useScrollTrigger } from "@mui/material";
 
 import Phone from "../components/auth/phone";
 import Eye_open from '../static/img/eye_open.png'
@@ -8,7 +7,7 @@ import Eye_close from '../static/img/eye_close.png'
 import Post from "../routes/post";
 import Loading from '../static/img/loading.gif'
 
-const Login = () => {
+const Login = ({ApiUrl}) => {
 
     const navigate = useNavigate()
 
@@ -56,7 +55,7 @@ const Login = () => {
 
         if (!errorPhone && !errorPassword) {
             setLoading(true)
-            Post('http://127.0.0.1:8000/api/v1/auth/login/', data).then(
+            Post(`${ApiUrl}api/v1/auth/login/`, data).then(
                 r => {
                     if (r?.status == 200) {
                         localStorage.setItem('infoUserMeal', JSON.stringify(r?.data))
